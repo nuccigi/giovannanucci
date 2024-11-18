@@ -1,0 +1,37 @@
+#O objetivo deste código é utilizar a técnica de raspagem de dados para coletar 
+#dados e informações da web.
+
+#Vamos raspar a lista de unidades federativas do Brasil por alfabetização na wikipedia.
+
+#Carregando as bibliotecas necessárias para manipulação de dados e raspagem de sites.
+library(dplyr) #Biblioteca para manipulação de dados.
+library(rvest) #Biblioteca para raspagem de dados de páginas web.
+
+#Definimos o URL da página da web que queremos raspar e salvamos no objeto "url".
+url <- "https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_alfabetiza%C3%A7%C3%A3o"
+
+#Lemos o conteúdo da página HTML do URL fornecido e o salvamos no objeto "html".
+html <- read_html(url)
+
+#Extraímos o primeiro elemento HTML do tipo "h1"
+html |> 
+  html_element("h1")
+
+#Extraímos todos os elementos HTML do tipo "h1" e transformamos seu conteúdo em texto.
+html |>
+  html_elements("h1") |>
+  html_text2()
+
+#Coletamos todas as tabelas presentes na página e as salvamos em uma lista chamada "tabelas".
+tabelas <- html |>
+  html_elements("table") |> #Localiza todos os elementos HTML do tipo "table".
+  html_table()              #Converte os elementos de tabela em data frames R.
+
+#Exibimos todas as tabelas coletadas para verificar o conteúdo.
+tabelas
+
+#Selecionamos a terceira tabela da lista, que é a que queremos para nossa análise, 
+#e a salvamos no objeto "principal".
+principal <- tabelas[[3]]
+
+#Agora, os dados estão raspados e prontos para serem análisados no objeto "principal"
