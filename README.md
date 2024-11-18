@@ -10,9 +10,9 @@ Meu portfólio no GitHub: https://github.com/nuccigi/giovannanucci
 
 Cada pasta deste repositório corresponde a um projeto específico. Aqui estão os projetos disponíveis:
 
-Projetos
+Projetos:
 
-*Raspagem de Dados*
+- *Raspagem de Dados na Web:* 
 Utiliza a linguagem R e a biblioteca rvest para coletar dados da Wikipédia, transformando-os em um DataFrame pronto para análise.
 
 
